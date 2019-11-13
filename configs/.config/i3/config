@@ -67,6 +67,8 @@ bindsym $mod+w exec $terminal --title="nmtui" -e nmtui
 bindsym $mod+Shift+w exec firefox
 bindsym $mod+Shift+c exec code
 bindsym $mod+Shift+i exec idea
+bindsym $mod+Shift+t exec $terminal --title="ranger" -e ranger
+bindsym $mod+Shift+a exec mate-calc 
 
 # focus_follows_mouse no
 
@@ -180,6 +182,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open specific applications in floating mode
 for_window [class="Xfce4-terminal" title="nmtui"] floating enable border pixel 1
+for_window [class="Xfce4-terminal" title="ranger"] floating enable border pixel 1
 for_window [class="Calculator"] floating enable border pixel 1
 for_window [title="Electronics GUI"] floating enable border pixel 1
 #for_window [title="Electronics GUI"] floating enable border pixel 1
@@ -310,6 +313,12 @@ set_from_resource $term_color15    color15
 #        binding_mode       #16a085 #2C2C2C #F9FAF9
 #        urgent_workspace   #16a085 #FDF6E3 #E5201D
 #    }
+#}
+
+#bar {
+#	status_command i3status
+#	i3bar_command i3bar -t
+#	position top
 #}
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
