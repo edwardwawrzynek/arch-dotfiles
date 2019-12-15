@@ -7,9 +7,6 @@ export PATH=$PATH:~/.local/bin/
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/imagemagick6/pkgconfig
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
 
 #Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

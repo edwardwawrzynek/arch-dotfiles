@@ -1,5 +1,3 @@
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod1
@@ -52,7 +50,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # Set Wallpaper
 exec_always --no-startup-id feh --bg-fill --randomize ~/.wallpapers
 # Startup compton for transparency
-exec_always --no-startup-id /home/edward/.config/i3/start_compton
+exec --no-startup-id /home/edward/.config/i3/start_compton
 # Add ssh key
 exec --no-startup-id ssh-add
 # Start redshift
@@ -60,15 +58,19 @@ exec redshift -t 6500:3000
 
 # Slow down usb mouse
 exec_always --no-startup-id xinput set-prop 'Logitech M325' 'libinput Accel Speed' -0.97
+exec_always --no-startup-id xinput set-prop 'Logitech Wireless Mouse' 'libinput Accel Speed' -0.97
 
 # Start Applications
 bindsym $mod+w exec $terminal --title="nmtui" -e nmtui
-
+bindsym $mod+i exec $terminal --title="ictui" -e ictui
 bindsym $mod+Shift+w exec firefox
-bindsym $mod+Shift+c exec code
+bindsym $mod+Shift+p exec tor-browser
+bindsym $mod+Shift+v exec code
+bindsym $mod+Shift+c exec clion
 bindsym $mod+Shift+i exec idea
 bindsym $mod+Shift+t exec $terminal --title="ranger" -e ranger
-bindsym $mod+Shift+a exec mate-calc 
+bindsym $mod+shift+h exec $terminal --title="htop" -e htop 
+bindsym $mod+Shift+a exec gnome-calculator 
 
 # focus_follows_mouse no
 
@@ -183,7 +185,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Open specific applications in floating mode
 for_window [class="Xfce4-terminal" title="nmtui"] floating enable border pixel 1
 for_window [class="Xfce4-terminal" title="ranger"] floating enable border pixel 1
-for_window [class="Calculator"] floating enable border pixel 1
+for_window [class="Xfce4-terminal" title="ictui"] floating enable border pixel 1
+for_window [class="Xfce4-terminal" title="htop"] floating enable border pixel 1
+for_window [class="Gnome-calculator"] floating enable border pixel 1
 for_window [title="Electronics GUI"] floating enable border pixel 1
 #for_window [title="Electronics GUI"] floating enable border pixel 1
 
@@ -243,7 +247,7 @@ mode "resize" {
 }
 
 # Autostart applications
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
@@ -322,6 +326,7 @@ set_from_resource $term_color15    color15
 #}
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id polybar example
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
